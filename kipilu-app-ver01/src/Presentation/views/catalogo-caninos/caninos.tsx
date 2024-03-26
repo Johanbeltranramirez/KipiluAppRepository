@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 const CaninosScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Catálogo de perros</Text>
+      <Image
+        source={require('../../../../assets/catalogo-caninos/1.png')} 
+        style={styles.imagenPortada}
+      />
+      <Text style={styles.text}>Catálogo de gatos</Text>
     </View>
   );
 }
@@ -15,10 +19,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  imagenPortada: {
+    width: '100%', // Ajusta el ancho de la imagen según tus necesidades
+    height: 200, // Ajusta la altura de la imagen según tus necesidades
+    resizeMode: 'cover', // Ajusta el modo de redimensionamiento según tus necesidades
+    marginBottom: 20, // Ajusta el margen inferior de la imagen según tus necesidades
+  },
   text: {
     fontSize: 30,
     textAlign: 'center',
-    marginTop: '20%', // Si deseas usar un porcentaje para marginTop, asegúrate de que esté funcionando como se espera en tu diseño.
+    marginTop: '100%',
   },
 });
 
