@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
     marginTop: '20%', // Si deseas usar un porcentaje para marginTop, asegúrate de que esté funcionando como se espera en tu diseño.
-    fontFamily: 'Arial',
   },
 });
 

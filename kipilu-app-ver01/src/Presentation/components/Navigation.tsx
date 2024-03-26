@@ -29,7 +29,7 @@ function MyTabs() {
                 tabBarLabel: 'Recomendación',
                 tabBarActiveTintColor:"#33FFA5", 
                 tabBarIcon: ({ color, size }) => (
-                    <MaterialIcons name="tips-and-updates" size={24} color={color} />
+                    <MaterialIcons name="tips-and-updates" size={30} color={color} />
                 ),
                 headerShown: false,
             }}
@@ -42,7 +42,7 @@ function MyTabs() {
                 tabBarLabel: 'Cátalogo canino', 
                 tabBarActiveTintColor:"#19CFE8", 
                 tabBarIcon: ({ color, size }) => (
-                    <FontAwesome6 name="dog" size={24} color={color} />
+                    <FontAwesome6 name="dog" size={30} color={color} />
                 ),
                 headerShown: false,
 
@@ -56,7 +56,7 @@ function MyTabs() {
                 tabBarLabel: 'Cátalogo felino', 
                 tabBarActiveTintColor:"#E8AD19", 
                 tabBarIcon: ({ color, size }) => (
-                   <FontAwesome5 name="cat" size={24} color={color} />                
+                   <FontAwesome5 name="cat" size={30} color={color} />                
                 ),
 
                 headerShown: false,
@@ -77,3 +77,4 @@ export default function Navigation() {
         <NavigationContainer {...props} />
     );
 }
+
