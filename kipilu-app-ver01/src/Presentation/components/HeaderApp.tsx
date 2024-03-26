@@ -31,9 +31,9 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   logo: {
-    width: 80,
-    height: 80,
-    marginRight: 10,
+    width: 60,
+    height: 60,
+    marginRight: 19,
   },
   text: {
     color: '#af3a11',
