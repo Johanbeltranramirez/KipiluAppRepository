@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const HeaderApp = () => {
+function HeaderApp() {
   return (
     <View style={styles.container}>
       <Image
