@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-
 
 const CaninosScreen = () => {
   const navigateToNextPage = () => {
@@ -13,8 +12,8 @@ const CaninosScreen = () => {
 
   return (
     <View style={styles.container}>
-       <Image
-        source={require('../../../../assets/catalogo-caninos/1.png')} // Ruta de la imagen
+      <Image
+        source={require('../../../../assets/catalogo-caninos/1.png')}
         style={styles.image}
       />
 
@@ -37,11 +36,22 @@ const CaninosScreen = () => {
             - Información detallada sobre cada perro.
           </Text>
           <Text style={styles.additionalText}>
-            -  Opciones de adopción.
+            - Opciones de adopción.
             {'\n'} {/* Salto de línea */}
           </Text>
         </View>
       </View>
+     {/* Texto de bajo de la linea */}
+     <View style={styles.adoptaContainer}>
+          <Text style={styles.adoptaText}>
+            ADOPTA, NO COMPRES
+          </Text>
+          <Text style={styles.buscaAmigoText}>
+            Busca a tu amigo peludo que está en búsqueda de un hogar
+          </Text>
+        </View>
+
+
       
       {/* Segunda imagen y especificaciones */}
       <TouchableOpacity onPress={navigateToNextPage}>
@@ -58,35 +68,34 @@ const CaninosScreen = () => {
         </View>
       </TouchableOpacity>
     </View>
-
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
- 
   image: {
-    width: 400, // Ancho de la imagen
-    height: 200, // Alto de la imagen
-    resizeMode: 'cover', // Modo de redimensionamiento de la imagen
-    marginBottom: 280, // Espacio debajo de la imagen
+    width: 400,
+    height: 200,
+    resizeMode: 'cover',
+    marginBottom: 280,
   },
   textoFlotante: {
     position: 'absolute',
-    top: 220, // Altura desde la parte superior
-    left: 0, // Espacio desde el borde izquierdo
-    right: 120, // Para que ocupe todo el ancho disponible
-    zIndex: 1, // Para que esté por encima de otras vistas
-    alignItems: 'center', // Para centrar horizontalmente
-  },  
+    top: 220,
+    left: 0,
+    right: 120,
+    zIndex: 1,
+    alignItems: 'center',
+  },
   texto: {
     fontSize: 18,
     fontWeight: 'bold',
-    right: 45, // Para que ocupe todo el ancho disponible
+    right: 34,
     color: '#CB8E46',
     marginBottom: 10,
   },
@@ -101,11 +110,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
-    backgroundColor: '#f0f0f0', // Color de fondo del contenedor de la segunda imagen y especificaciones
-    borderRadius: 10, // Bordes redondeados del contenedor
-    paddingHorizontal: 10, // Espacio horizontal en el contenedor
-    paddingVertical: 15, // Espacio vertical en el contenedor
-    width: '100%', // Ancho del contenedor
+    backgroundColor: '#f0f0f0',
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    width: '100%',
   },
   smallImage: {
     width: 100,
@@ -119,15 +128,29 @@ const styles = StyleSheet.create({
   specText: {
     fontSize: 16,
     marginBottom: 5,
-    color: '#333', // Color del texto de las especificaciones
+    color: '#333',
   },
   additionalTextContainer: {
-    marginLeft: 10, // Espacio desde el borde izquierdo para el texto adicional
-    alignItems: 'flex-start', // Para alinear a la izquierda
+    marginLeft: 10,
+    alignItems: 'flex-start',
   },
   additionalText: {
-    marginLeft: 9, // Espacio para la viñeta
-    textAlign: 'left', // Alinear el texto a la izquierda
+    marginLeft: 9,
+    textAlign: 'left',
+    marginTop: 5, // Añadir un espacio superior
+  },
+  adoptaContainer: {
+    alignItems: 'center', // Para centrar horizontalmente
+  },
+  adoptaText: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: '#CB8E46',
+    textAlign: 'center', // Para centrar el texto horizontalmente
+  },
+  buscaAmigoText: {
+    fontSize: 10, // Tamaño de letra más pequeño
+    color: '#CB8E46',
   },
 });
 

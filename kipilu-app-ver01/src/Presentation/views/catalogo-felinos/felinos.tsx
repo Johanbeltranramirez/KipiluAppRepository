@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   imagenPortada: {
     width: '100%', // Ajusta el ancho de la imagen según tus necesidades
