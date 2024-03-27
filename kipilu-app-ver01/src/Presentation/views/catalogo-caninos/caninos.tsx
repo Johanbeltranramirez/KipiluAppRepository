@@ -59,14 +59,6 @@ const CaninosScreen = () => {
       </TouchableOpacity>
     </View>
 
-      {/* Texto */}
-      <View style={styles.texto}>
-      <Text style={styles.text}>ADOPTA, NO COMPRES</Text>
-      <Text style={styles.text}>Busca a tu amigo peludo que está en búsqueda de un hogar</Text>
-    </View>
-
-
-
   );
 }
 
@@ -76,11 +68,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  texto: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+ 
   image: {
     width: 400, // Ancho de la imagen
     height: 200, // Alto de la imagen
