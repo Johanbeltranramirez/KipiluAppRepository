@@ -7,6 +7,7 @@ import { NavigationContainer, NavigationContainerProps } from '@react-navigation
 import CaninosScreen from "../views/catalogo-caninos/caninos";
 import FelinosScreen from "../views/catalogo-felinos/felinos";
 import RecomendacionScreen from '../views/recomendaciones/recomendaciones';
+import FormularioScreen from '../views/formulario/formulario';
 
 // Iconos
 import { MaterialIcons } from '@expo/vector-icons';
@@ -55,6 +56,20 @@ function MyTabs() {
             options={{
                 tabBarLabel: 'Cátalogo felino', 
                 tabBarActiveTintColor:"#E8AD19", 
+                tabBarIcon: ({ color, size }) => (
+                   <FontAwesome5 name="cat" size={30} color={color} />                
+                ),
+
+                headerShown: false,
+            }}
+        />
+
+        <Tab.Screen 
+            name="formulario" 
+            component={FormularioScreen} 
+            options={{
+                tabBarLabel: 'Formulario', 
+                tabBarActiveTintColor:"#6600cc", 
                 tabBarIcon: ({ color, size }) => (
                    <FontAwesome5 name="cat" size={30} color={color} />                
                 ),
