@@ -41,7 +41,7 @@ function MyTabs() {
             component={CaninosScreen} 
             options={{
                 tabBarLabel: 'Cátalogo canino', 
-                tabBarActiveTintColor:"#19CFE8", 
+                tabBarActiveTintColor:"#E8AD19", 
                 tabBarIcon: ({ color, size }) => (
                     <FontAwesome6 name="dog" size={30} color={color} />
                 ),
@@ -55,7 +55,7 @@ function MyTabs() {
             component={FelinosScreen} 
             options={{
                 tabBarLabel: 'Cátalogo felino', 
-                tabBarActiveTintColor:"#E8AD19", 
+                tabBarActiveTintColor:"#19CFE8", 
                 tabBarIcon: ({ color, size }) => (
                    <FontAwesome5 name="cat" size={30} color={color} />                
                 ),
