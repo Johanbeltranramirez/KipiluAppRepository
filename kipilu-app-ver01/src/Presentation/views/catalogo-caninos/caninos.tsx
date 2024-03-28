@@ -1,13 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { NavigationProp } from '@react-navigation/native'; // Importar NavigationProp
 
-const CaninosScreen = () => {
-  const navigateToNextPage = () => {
-    // Aquí puedes navegar a la siguiente página
-    // navigation.navigate('NombreDeLaSiguientePágina');
-    // Por ejemplo:
-    // navigation.navigate('DetallePerro');
+interface CaninosScreenProps {
+  navigation: NavigationProp<any>; // Definir el tipo de la propiedad navigation
+}
+
+const CaninosScreen: React.FC<CaninosScreenProps> = ({ navigation }) => { // Usar la interfaz CaninosScreenProps
+  const navigateToFormulario = () => {
+    navigation.navigate('formulario');
   };
 
   return (
@@ -54,7 +56,7 @@ const CaninosScreen = () => {
 
       
       {/* Segunda imagen y especificaciones */}
-      <TouchableOpacity onPress={navigateToNextPage}>
+      <TouchableOpacity onPress={navigateToFormulario}>
         <View style={styles.dogContainer}>
           <Image
             source={require('../../../../assets/catalogo-caninos/perro2.jpg')}
@@ -71,6 +73,7 @@ const CaninosScreen = () => {
   );
 };
 
+// Estilos CSS de CaninosScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
