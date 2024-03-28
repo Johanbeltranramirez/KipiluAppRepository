@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-//import { createNativeStackNavigator } from '@react-navigation/native-stack'; despues usarlo
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer, NavigationContainerProps } from '@react-navigation/native'; // Importamos NavigationContainerProps
 
 // Pantallas
@@ -8,12 +8,39 @@ import CaninosScreen from "../views/catalogo-caninos/caninos";
 import FelinosScreen from "../views/catalogo-felinos/felinos";
 import RecomendacionScreen from '../views/recomendaciones/recomendaciones';
 import FormularioScreen from '../views/formulario/formulario';
+import CataFelinoScreen from '../views/catalogo-felinos/cata_felino';
 
 // Iconos
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
+const HomeStackNavigator = createNativeStackNavigator();
+
+const MyTack = () => {
+    return (
+        <HomeStackNavigator.Navigator>
+          
+          <HomeStackNavigator.Screen 
+          name="felinos" 
+          component={FelinosScreen} 
+          options={{
+            headerShown: false,
+          }}
+          />
+
+          <HomeStackNavigator.Screen 
+          name="cata_felino" 
+          component={CataFelinoScreen}
+          options={{
+            headerTitle: '', 
+        }}
+          />
+
+
+        </HomeStackNavigator.Navigator>
+    );
+  }
 
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +79,7 @@ function MyTabs() {
 
         <Tab.Screen 
             name="felinos" 
-            component={FelinosScreen} 
+            component={MyTack} 
             options={{
                 tabBarLabel: 'Cátalogo felino', 
                 tabBarActiveTintColor:"#19CFE8", 
