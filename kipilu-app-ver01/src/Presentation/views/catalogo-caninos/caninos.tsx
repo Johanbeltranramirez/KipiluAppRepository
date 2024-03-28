@@ -1,72 +1,74 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 const CaninosScreen = () => {
-  const navigateToNextPage = () => {
-    // Aquí puedes navegar a la siguiente página
-    // navigation.navigate('NombreDeLaSiguientePágina');
-    // Por ejemplo:
-    // navigation.navigate('DetallePerro');
-  };
+  const navigation = useNavigation(); // Obtener la función de navegación
 
+  const handlePress = () => {
+    // Obtener el nombre de la pantalla de manera independiente
+    const screenName = 'cata_canino';
+    // Navegar a la pantalla 'cata_canino' utilizando el nombre de la pantalla obtenido
+    navigation.navigate(screenName as never);
+  };
+ 
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../../../assets/catalogo-caninos/1.png')}
-        style={styles.image}
-      />
-
-      {/* Texto flotante */}
-      <View style={styles.textoFlotante}>
-        <Text style={styles.texto}>Características</Text>
+      <View style={styles.container3}>
+        <Image
+          source={require('../../../../assets/catalogo-caninos/1.png')} 
+          style={styles.imagenPortada}
+        />
+        <View style={styles.textContainer}>
+          <Text style={styles.caracteristicasText}>Características:</Text>
+          <View style={styles.additionalTextContainer}>
+            <Text style={styles.additionalText}>
+              <AntDesign 
+                name="arrowright" 
+                size={24} 
+                color="#CB8E46" 
+              /> 
+              Gatos de diferentes razas disponibles
+            </Text>
+            <Text style={styles.additionalText}>
+              <AntDesign 
+                name="arrowright" 
+                size={24} 
+                color="#CB8E46" 
+              /> 
+              Información detallada sobre cada gato
+            </Text>
+            <Text style={styles.additionalText}>
+              <AntDesign 
+                name="arrowright" 
+                size={24} 
+                color="#CB8E46" 
+              /> 
+              Opciones de adopción
+            </Text>
+          </View>
+        </View>
         <LinearGradient
           colors={['#e6f1f1', '#afedf3', '#fdea95', '#f9a073']}
           style={styles.gradientLine}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
         />
-
-        {/* Texto adicional */}
-        <View style={styles.additionalTextContainer}>
-          <Text style={styles.additionalText}>
-            - Perros de diferentes razas disponibles.
-          </Text>
-          <Text style={styles.additionalText}>
-            - Información detallada sobre cada perro.
-          </Text>
-          <Text style={styles.additionalText}>
-            - Opciones de adopción.
-            {'\n'} {/* Salto de línea */}
-          </Text>
-        </View>
       </View>
-     {/* Texto de bajo de la linea */}
-     <View style={styles.adoptaContainer}>
-          <Text style={styles.adoptaText}>
-            ADOPTA, NO COMPRES
-          </Text>
-          <Text style={styles.buscaAmigoText}>
-            Busca a tu amigo peludo que está en búsqueda de un hogar
-          </Text>
-        </View>
 
+      {/* Nuevo View para los textos de mensaje*/}
+      <View style={styles.mensaje}>
+        <Text style={styles.mensajeText1}>ADOPTA, NO COMPRES</Text>
+        <Text style={styles.mensajeText2}>Busca a tu amigo peludo que está en búsqueda de un hogar</Text>
+      </View>
 
-      
-      {/* Segunda imagen y especificaciones */}
-      <TouchableOpacity onPress={navigateToNextPage}>
-        <View style={styles.dogContainer}>
-          <Image
-            source={require('../../../../assets/catalogo-caninos/perro2.jpg')}
-            style={styles.smallImage}
-          />
-          <View style={styles.specifications}>
-            <Text style={styles.specText}>Nombre: Rex</Text>
-            <Text style={styles.specText}>Edad: 3 años</Text>
-            <Text style={styles.specText}>Raza: Labrador</Text>
-          </View>
-        </View>
+      {/* Botón circular grande */}
+      <TouchableOpacity onPress={handlePress} style={styles.boton}>
+        <Text style={styles.botonText}>Ve adoptar!!</Text>
       </TouchableOpacity>
+
     </View>
   );
 };
@@ -78,80 +80,78 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  image: {
-    width: 400,
+  container3: {
+    width: '100%',
     height: 200,
-    resizeMode: 'cover',
-    marginBottom: 280,
-  },
-  textoFlotante: {
-    position: 'absolute',
-    top: 220,
-    left: 0,
-    right: 120,
-    zIndex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  texto: {
+  imagenPortada: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    marginTop: -410,
+  },
+  textContainer: {
+    position: 'absolute',
+    bottom: 40,
+    left: 10,
+    alignItems: 'flex-start',
+  },
+  caracteristicasText: {
     fontSize: 18,
     fontWeight: 'bold',
-    right: 34,
-    color: '#CB8E46',
     marginBottom: 10,
+    textAlign: 'left',
+    color: '#CB8E46',
   },
-  gradientLine: {
-    position: 'absolute',
-    left: 29,
-    bottom: 0,
-    width: '120%',
-    height: 4,
-  },
-  dogContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-    backgroundColor: '#f0f0f0',
+  additionalTextContainer: {
+    backgroundColor: '##FFE4BF',
     borderRadius: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 15,
-    width: '100%',
+    padding: 10,
+    alignItems: 'flex-start',
   },
-  smallImage: {
-    width: 100,
-    height: 100,
-    resizeMode: 'cover',
-    marginRight: 10,
-  },
-  specifications: {
-    flex: 1,
-  },
-  specText: {
+  additionalText: {
     fontSize: 16,
     marginBottom: 5,
     color: '#333',
   },
-  additionalTextContainer: {
-    marginLeft: 10,
-    alignItems: 'flex-start',
+  gradientLine: {
+    position: 'absolute',
+    left: 60,
+    bottom: 10,
+    width: '70%',
+    height: 2,
   },
-  additionalText: {
-    marginLeft: 9,
-    textAlign: 'left',
-    marginTop: 5, // Añadir un espacio superior
+  mensaje: {
+    alignItems: 'center',
+    marginTop: 20,
   },
-  adoptaContainer: {
-    alignItems: 'center', // Para centrar horizontalmente
-  },
-  adoptaText: {
+  mensajeText1: {
+    fontSize: 17,
     fontWeight: 'bold',
-    fontSize: 16,
-    color: '#CB8E46',
-    textAlign: 'center', // Para centrar el texto horizontalmente
+    marginBottom: 5,
+    color: '#f9a073',
   },
-  buscaAmigoText: {
-    fontSize: 10, // Tamaño de letra más pequeño
-    color: '#CB8E46',
+  mensajeText2: {
+    fontSize: 13,
+    color: '#333',
   },
+  boton: {
+    backgroundColor: '#FFE4BF',
+    width: 120,
+    height: 120,
+    borderRadius: 90,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 20,
+  },
+  botonText: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 15,
+  }
 });
 
 export default CaninosScreen;

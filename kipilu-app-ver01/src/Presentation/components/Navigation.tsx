@@ -14,6 +14,7 @@ import CataFelinoScreen from '../views/catalogo-felinos/cata_felino';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import CataCaninoScreen from '../views/catalogo-caninos/cata_canino';
 
 const HomeStackNavigator = createNativeStackNavigator();
 
@@ -32,6 +33,31 @@ const MyTack = () => {
           <HomeStackNavigator.Screen 
           name="cata_felino" 
           component={CataFelinoScreen}
+          options={{
+            headerTitle: '', 
+        }}
+          />
+
+
+        </HomeStackNavigator.Navigator>
+    );
+  }
+
+  const MyTack2 = () => {
+    return (
+        <HomeStackNavigator.Navigator>
+          
+          <HomeStackNavigator.Screen 
+          name="caninos" 
+          component={CaninosScreen} 
+          options={{
+            headerShown: false,
+          }}
+          />
+
+          <HomeStackNavigator.Screen 
+          name="cata_canino" 
+          component={CataCaninoScreen}
           options={{
             headerTitle: '', 
         }}
@@ -65,7 +91,7 @@ function MyTabs() {
 
         <Tab.Screen 
             name="caninos" 
-            component={CaninosScreen} 
+            component={MyTack2} 
             options={{
                 tabBarLabel: 'Cátalogo canino', 
                 tabBarActiveTintColor:"#E8AD19", 
@@ -119,4 +145,3 @@ export default function Navigation() {
         <NavigationContainer {...props} />
     );
 }
-
