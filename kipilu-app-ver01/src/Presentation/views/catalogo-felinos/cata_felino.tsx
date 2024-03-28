@@ -70,7 +70,7 @@ const CataFelinoScreen = () => {
         
         {/* Renderizar las cartas de animales */}
         {animales.map((animal, index) => (
-          <View key={index} style={styles.carta}>
+          <View style={styles.carta}>
             <Image
               source={animal.imagen} 
               style={styles.imagenAnimal}
