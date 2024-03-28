@@ -63,6 +63,9 @@ const CataFelinoScreen = () => {
       <SafeAreaView style={styles.container}>
         <View style={styles.body}>
           <Text style={styles.bienvenid}>Bienvenid@ al cátalogo de felinos</Text>
+          <View>
+            <Text style={styles.sub}>Si estás interesado en alguno, simplemente haz clic sobre él.</Text>
+            </View>
         </View>
         
         {/* Renderizar las cartas de animales */}
@@ -135,6 +138,9 @@ const styles = StyleSheet.create({
   estadoAnimal: {
     fontSize: 16,
     marginBottom: 5,
+  },
+  sub: {
+    fontSize: 12,
   },
 });
 
