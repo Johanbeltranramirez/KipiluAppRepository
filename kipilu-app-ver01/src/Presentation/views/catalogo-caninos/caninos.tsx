@@ -30,7 +30,7 @@ const CaninosScreen = () => {
                 size={24} 
                 color="#CB8E46" 
               /> 
-              Gatos de diferentes razas disponibles
+              Perros de diferentes razas disponibles
             </Text>
             <Text style={styles.additionalText}>
               <AntDesign 
@@ -38,7 +38,7 @@ const CaninosScreen = () => {
                 size={24} 
                 color="#CB8E46" 
               /> 
-              Información detallada sobre cada gato
+              Información detallada sobre cada perro
             </Text>
             <Text style={styles.additionalText}>
               <AntDesign 
