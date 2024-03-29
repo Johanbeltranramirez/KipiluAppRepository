@@ -10,8 +10,9 @@ Animal.create = (animal, result) => {
       Sexo,
       Edad,
       ID_Estado,
+      ID_Especie,
       Imagen
-    ) VALUES (?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)
   `;
 
   db.query(
@@ -22,11 +23,12 @@ Animal.create = (animal, result) => {
       animal.sexo,
       animal.edad,
       animal.ID_Estado,
+      animal.ID_Especie, // Nuevo campo para la especie
       animal.imagen
     ],
     (err, res) => {
       if (err) {
-        console.log('error: ', err);
+        console.log('Error al crear el animal: ', err);
         result(err, null);
       } else {
         console.log('Id del nuevo animal: ', res.insertId);
