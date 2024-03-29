@@ -8,7 +8,7 @@ Animalid.selectAllBySpecies = (especieId, result) => {
     FROM animales
     INNER JOIN Especies ON animales.ID_Especie = Especies.ID_Especie
     WHERE animales.ID_Especie = ?
-    AND animales.ID_Estado != 3;
+    AND animales.ID_Estado != 1;
   `;
 
   db.query(sql, [especieId], (err, res) => {
