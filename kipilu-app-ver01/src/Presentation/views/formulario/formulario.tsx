@@ -10,8 +10,15 @@ import {
 import useViewModel from './ViewModel';
 import { CustomTextInput } from '../../components/components-formulario/CustomTextInput';
 import { RoundedButton } from '../../components/components-formulario/RoundedButton'; 
+import { useNavigation } from '@react-navigation/native';
 
 export const FormularioScreen = () => {
+  const navigation =useNavigation();
+
+  const handlePress = () => {
+  const screenName = 'recomendaciones';
+  navigation.navigate(screenName as never);
+  }
   const { ID_Adoptante, P_Nombre, S_Nombre, P_Apellido, S_Apellido, Correo, Direccion, Telefono, ID_Animal, onChange, formulario } = useViewModel();
   
   return (
@@ -136,8 +143,8 @@ export const FormularioScreen = () => {
               <RoundedButton  text='Enviar' onPress={formulario} />
             </View>
             <View>
-              <TouchableOpacity style={styles.btn2}>
-                <Text style={styles.textBtn}>Volver al catálogo</Text>
+              <TouchableOpacity onPress={handlePress} style={styles.btn2}>
+                <Text style={styles.textBtn}>Volver al inicio</Text>
               </TouchableOpacity>
             </View>
           </View>
