@@ -20,7 +20,7 @@ app.set('port', port);
 animalRoutes(app);
 
 // Dirección IP V4 de la máquina, consultar con ipconfig
-server.listen(port, '192.168.128.11' || 'localhost', function() {
+server.listen(port, '192.168.2.11' || 'localhost', function() {
     console.log('Aplicación de NodeJS ' + process.pid + ' inicio en el puerto ' + port);
 });
 
