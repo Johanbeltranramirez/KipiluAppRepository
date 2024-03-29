@@ -19,9 +19,9 @@ export const CustomTextInput = ({
   onChangeText
 }: Props) => {
   return (
-    <View style={styles.formInput}>
+    <View >
       <TextInput
-        style={styles.formTextInput}
+        
         placeholder={placeholder}
         keyboardType={keyboardType}
         value={value}
@@ -32,15 +32,7 @@ export const CustomTextInput = ({
   );
 };
 
-const styles = StyleSheet.create({
-  formInput: {
-    flexDirection: 'row',
-    marginTop: 30,
-  },
-  formTextInput: {
-    flex: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: '#AAAAAA',
-    marginLeft: 15,
-  }
-});
+
+
+ 
+
