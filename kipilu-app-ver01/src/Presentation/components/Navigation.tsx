@@ -29,6 +29,11 @@ const CaninosStack = () => {
         component={CataCaninoScreen}
         options={{ headerTitle: '' }}
       />
+      <CatalogStackNavigator.Screen 
+        name="formulario" 
+        component={FormularioScreen}
+        options={{ headerTitle: '' }}
+      />
     </CatalogStackNavigator.Navigator>
   );
 }

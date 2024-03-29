@@ -1,86 +1,55 @@
-import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image} from 'react-native';
-
-const animales = [
-  {
-    nombre: 'toby',
-    raza: 'nose',
-    sexo: 'Macho',
-    edad: '2 años',
-    id: 'FM-Yuky_01',
-    estado: 'En proceso',
-    imagen: require('../../../../assets/catalogo-caninos/perro1.jpg')
-  },
-  {
-    nombre: 'Simba',
-    raza: 'Persa',
-    sexo: 'Macho',
-    edad: '1 años',
-    id: 'FM-Simba_02',
-    estado: 'En proceso',
-    imagen: require('../../../../assets/catalogo-caninos/perro2.jpg')
-  },
-  {
-    nombre: 'Kira',
-    raza: 'Maine Coon',
-    sexo: 'Hembra',
-    edad: '1 año',
-    id: 'FH-Nala_03',
-    estado: 'Disponible',
-    imagen: require('../../../../assets/catalogo-caninos/perro3.jpg')
-  },
-  {
-    nombre: 'Tiger',
-    raza: 'Bengala',
-    sexo: 'Macho',
-    edad: '4 años',
-    id: 'FH-Tiger_04',
-    estado: 'Disponible',
-    imagen: require('../../../../assets/catalogo-caninos/perro4.jpg')
-  },
-  {
-    nombre: 'Mia',
-    raza: 'Siamés',
-    sexo: 'Hembra',
-    edad: '2 años',
-    id: 'FH-Mia_05',
-    estado: 'En proceso',
-    imagen: require('../../../../assets/catalogo-caninos/perro5.jpg')
-  }
-  // Agrega la información de los otros animales aquí
-];
+// CataFelinoScreen.tsx
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import AnimalsViewModel, { Animal } from './ViewModel'; // Importa el ViewModel y el tipo Animal
 
 const CataCaninoScreen = () => {
+  const navigation = useNavigation();
+  const { fetchAnimals } = AnimalsViewModel();
+  const [animals, setAnimals] = useState<Animal[]>([]); // Estado para almacenar los animales
+
+  useEffect(() => {
+    const getAnimals = async () => {
+      const animalData = await fetchAnimals();
+      setAnimals(animalData);
+    }
+    getAnimals();
+  }, []);
+
+  const handleAnimalPress = (animal: Animal) => {
+    const screenName = 'formulario';
+    console.log('Has hecho clic en el animal con ID:', animal.ID_Animal);
+    navigation.navigate(screenName as never);
+  };
+
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
         <View style={styles.body}>
-          <Text style={styles.bienvenid}>Bienvenid@ al cátalogo de caninos</Text>
-          <View>
-            <Text style={styles.sub}>Si estás interesado en alguno, simplemente haz clic sobre él.</Text>
-            </View>
+          <Text style={styles.bienvenido}>Bienvenido al catálogo de felinos</Text>
+          <Text style={styles.subtitulo}>Si estás interesado en alguno, simplemente haz clic sobre él.</Text>
         </View>
         
         {/* Renderizar las cartas de animales */}
-        {animales.map((animal, index) => (
-          <View key={index} style={styles.carta}>
+        {animals.map((animal, index) => (
+          <TouchableOpacity key={index} style={styles.carta} onPress={() => handleAnimalPress(animal)}>
             <Image
-              source={animal.imagen} 
+              source={{ uri: animal.Imagen }} // Usar la URL de la imagen del animal
               style={styles.imagenAnimal}
             />
             <View style={styles.datosAnimal}>
-              <Text style={styles.estadoAnimal}>Nombre: {animal.nombre}</Text>
-              <Text style={styles.estadoAnimal}>Raza: {animal.raza}</Text>
-              <Text style={styles.estadoAnimal}>Sexo: {animal.sexo}</Text>
-              <Text style={styles.estadoAnimal}>Edad: {animal.edad}</Text>
-              <Text style={styles.estadoAnimal}>ID: {animal.id}</Text>
-              <Text style={styles.estadoAnimal}>Estado: {animal.estado}</Text>
+              <Text style={styles.textoAnimal}>Nombre: {animal.Nombre}</Text>
+              <Text style={styles.textoAnimal}>Raza: {animal.Raza}</Text>
+              <Text style={styles.textoAnimal}>Sexo: {animal.Sexo}</Text>
+              <Text style={styles.textoAnimal}>Edad: {animal.Edad}</Text>
+              <Text style={styles.textoAnimal}>ID: {animal.ID_Animal}</Text>
+              <Text style={styles.textoAnimal}>Estado: {animal.ID_Estado === 1 ? 'Adoptado' : (animal.ID_Estado === 2 ? 'No adoptado' : 'En proceso')}</Text>
             </View>
-          </View>
-          
+          </TouchableOpacity>
         ))}
 
-       <View style={{ height: 20 }}></View>
+        <View style={{ height: 20 }}></View>
       </SafeAreaView>
     </ScrollView>
   );
@@ -88,7 +57,7 @@ const CataCaninoScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ffff",
+    backgroundColor: "#ffffff",
     flex: 1,
     paddingTop: 20,
     paddingHorizontal: 20,
@@ -97,15 +66,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  bienvenid: {
+  bienvenido: {
     fontSize: 18,
     fontWeight: 'bold',
-    justifyContent: 'center',
-    alignItems: 'center',
     color: '#CB8E46',
+    marginBottom: 10,
+  },
+  subtitulo: {
+    fontSize: 12,
+    color: '#333',
+    marginBottom: 20,
   },
   carta: {
-    marginTop: 20,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
@@ -119,6 +91,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    marginBottom: 10,
   },
   imagenAnimal: {
     width: 100,
@@ -128,12 +101,9 @@ const styles = StyleSheet.create({
   datosAnimal: {
     marginLeft: 20,
   },
-  estadoAnimal: {
+  textoAnimal: {
     fontSize: 16,
     marginBottom: 5,
-  },
-  sub: {
-    fontSize: 12,
   },
 });
 

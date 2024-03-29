@@ -182,7 +182,6 @@ const styles = StyleSheet.create({
 
   bienvenid: { 
     fontSize: 20, 
-    fontStyle: 'italic', 
     fontWeight: 'bold', 
     color: "black", 
     justifyContent: 'center', 
