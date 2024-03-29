@@ -23,8 +23,12 @@ usersRoutes(app);
 
 // Dirección IP V4 de la máquina, consultar con ipconfig
 
+<<<<<<< HEAD
 server.listen(3000,  '192.168.101.9' || 'localhost', function() {
 
+=======
+server.listen(port, '192.168.128.11' || 'localhost', function() {
+>>>>>>> d592dd2a8778249b3fa75450e1fd3356bf124f00
     console.log('Aplicación de NodeJS ' + process.pid + ' inicio en el puerto ' + port);
 });
 

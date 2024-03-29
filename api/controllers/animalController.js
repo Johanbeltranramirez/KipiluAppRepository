@@ -1,5 +1,6 @@
 const Animal = require('../models/animal');
 const AnimalGet = require('../models/animalget'); // Renombramos el segundo módulo como AnimalGet
+const AnimalId = require('../models/animalid'); // Importamos el modelo animalid
 
 module.exports = {
   createAnimal(req, res) {
@@ -33,6 +34,24 @@ module.exports = {
         success: true,
         message: 'Animales obtenidos correctamente',
         data: animals // Datos de todos los animales
+      });
+    });
+  },
+
+  getAllAnimalsBySpecies(req, res) {
+    const especieId = req.params.especieId; // Obtén el ID de la especie de los parámetros de la solicitud
+    AnimalId.selectAllBySpecies(especieId, (err, animals) => { // Utilizamos AnimalId para obtener los animales por especie
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          message: 'Error al obtener los animales por especie',
+          error: err
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        message: 'Animales obtenidos por especie correctamente',
+        data: animals // Datos de todos los animales que cumplen con la especie especificada
       });
     });
   }
