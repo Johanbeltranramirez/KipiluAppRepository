@@ -4,9 +4,9 @@ const http = require('http');
 const server = http.createServer(app);
 const logger = require('morgan');
 const cors = require('cors');
-
 // Importar rutas
 const animalRoutes = require('./routes/animalRoutes');
+const usersRoutes = require('./routes/usersRouters');
 
 const port = process.env.PORT || 3000;
 app.use(logger('dev'));
@@ -18,9 +18,11 @@ app.set('port', port);
 
 // LLamando las rutas
 animalRoutes(app);
+usersRoutes(app);
+
 
 // Dirección IP V4 de la máquina, consultar con ipconfig
-server.listen(port, '192.168.128.11' || 'localhost', function() {
+server.listen(port, '192.168.101.9' || 'localhost', function() {
     console.log('Aplicación de NodeJS ' + process.pid + ' inicio en el puerto ' + port);
 });
 
