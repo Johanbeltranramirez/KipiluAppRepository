@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     color: '#CB8E46',
   },
   additionalTextContainer: {
-    backgroundColor: '##FFE4BF',
+    backgroundColor: '#FFECD4',
     borderRadius: 10,
     padding: 10,
     alignItems: 'flex-start',
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   boton: {
-    backgroundColor: '#FFE4BF',
+    backgroundColor: '#CB8E46',
     width: 120,
     height: 120,
     borderRadius: 90,
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     bottom: 20,
   },
   botonText: {
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 15,
   }

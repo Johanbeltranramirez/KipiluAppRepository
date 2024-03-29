@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     justifyContent: 'center',
     alignItems: 'center',
-    color: '#47979F',
+    color: '#CB8E46',
   },
   carta: {
     marginTop: 20,

@@ -1,51 +1,110 @@
-import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
-import { DataTable } from 'react-native-paper';
-import axios from 'axios';
+// CataFelinoScreen.tsx
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import AnimalsViewModel, { Animal } from './ViewModel'; // Importa el ViewModel y el tipo Animal
 
-const App = () => {
-  const [animales, setAnimales] = useState([]);
+const CataFelinoScreen = () => {
+  const navigation = useNavigation();
+  const { fetchAnimals } = AnimalsViewModel();
+  const [animals, setAnimals] = useState<Animal[]>([]); // Estado para almacenar los animales
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://192.168.2.11:3000/api/animales');
-        setAnimales(response.data);
-      } catch (error) {
-        console.error('Error al obtener datos de la API:', error);
-        setAnimales([]); // Inicializa animales con un arreglo vacío en caso de error
-      }
-    };
-
-    fetchData();
+    const getAnimals = async () => {
+      const animalData = await fetchAnimals();
+      setAnimals(animalData);
+    }
+    getAnimals();
   }, []);
 
+  const handleAnimalPress = (animal: Animal) => {
+    const screenName = 'formulario';
+    console.log('Has hecho clic en el animal con ID:', animal.ID_Animal);
+    navigation.navigate(screenName as never);
+  };
+
   return (
-    <View style={{ flex: 1 }}>
-      <DataTable>
-        <DataTable.Header>
-          <DataTable.Title>Nombre</DataTable.Title>
-          <DataTable.Title>Raza</DataTable.Title>
-          <DataTable.Title>Sexo</DataTable.Title>
-          <DataTable.Title>Edad</DataTable.Title>
-          <DataTable.Title>ID_Estado</DataTable.Title>
-          <DataTable.Title>Imagen</DataTable.Title>
-          <DataTable.Title>ID_Especie</DataTable.Title>
-        </DataTable.Header>
-        {animales.map((animal, id) => (
-          <DataTable.Row key={id}>
-            <DataTable.Cell>{animal.Nombre}</DataTable.Cell>
-            <DataTable.Cell>{animal.Raza}</DataTable.Cell>
-            <DataTable.Cell>{animal.Sexo}</DataTable.Cell>
-            <DataTable.Cell>{animal.Edad}</DataTable.Cell>
-            <DataTable.Cell>{animal.ID_Estado}</DataTable.Cell>
-            <DataTable.Cell>{animal.Imagen}</DataTable.Cell>
-            <DataTable.Cell>{animal.ID_Especie}</DataTable.Cell>
-          </DataTable.Row>
+    <ScrollView>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.body}>
+          <Text style={styles.bienvenido}>Bienvenido al catálogo de felinos</Text>
+          <Text style={styles.subtitulo}>Si estás interesado en alguno, simplemente haz clic sobre él.</Text>
+        </View>
+        
+        {/* Renderizar las cartas de animales */}
+        {animals.map((animal, index) => (
+          <TouchableOpacity key={index} style={styles.carta} onPress={() => handleAnimalPress(animal)}>
+            <Image
+              source={{ uri: animal.Imagen }} // Usar la URL de la imagen del animal
+              style={styles.imagenAnimal}
+            />
+            <View style={styles.datosAnimal}>
+              <Text style={styles.textoAnimal}>Nombre: {animal.Nombre}</Text>
+              <Text style={styles.textoAnimal}>Raza: {animal.Raza}</Text>
+              <Text style={styles.textoAnimal}>Sexo: {animal.Sexo}</Text>
+              <Text style={styles.textoAnimal}>Edad: {animal.Edad}</Text>
+              <Text style={styles.textoAnimal}>ID: {animal.ID_Animal}</Text>
+              <Text style={styles.textoAnimal}>Estado: {animal.ID_Estado === 1 ? 'Adoptado' : (animal.ID_Estado === 2 ? 'No adoptado' : 'En proceso')}</Text>
+            </View>
+          </TouchableOpacity>
         ))}
-      </DataTable>
-    </View>
+
+        <View style={{ height: 20 }}></View>
+      </SafeAreaView>
+    </ScrollView>
   );
 };
 
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#ffffff",
+    flex: 1,
+    paddingTop: 20,
+    paddingHorizontal: 20,
+  },
+  body: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bienvenido: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#47979F',
+    marginBottom: 10,
+  },
+  subtitulo: {
+    fontSize: 12,
+    color: '#333',
+    marginBottom: 20,
+  },
+  carta: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    marginBottom: 10,
+  },
+  imagenAnimal: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+  },
+  datosAnimal: {
+    marginLeft: 20,
+  },
+  textoAnimal: {
+    fontSize: 16,
+    marginBottom: 5,
+  },
+});
+
+export default CataFelinoScreen;

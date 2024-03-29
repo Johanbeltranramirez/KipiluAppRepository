@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Navigation from './src/Presentation/components/Navigation';
 import HeaderApp from './src/Presentation/components/HeaderApp'; // Asegúrate de que el nombre del archivo coincida
