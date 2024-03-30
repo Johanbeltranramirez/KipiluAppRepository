@@ -16,7 +16,7 @@ const RecomendacionScreen = () => {
        alimentación, atención veterinaria, elementos para su adaptación en casa y precios de estadía cuando 
        estés fuera de casa.
            </Text>
-        <Image source={require('./recomendaciones/señora_conperrito.PNG')} style={styles.image} />
+        <Image source={require('../../../../assets/recomendaciones/señora_conperrito.png')} style={styles.image} />
          <Text style={styles.text}>
          También debes analizar las edades y tipos de comportamiento de los animales, no es lo mismo un 
          cachorro a un adulto mayor. Los cachorros son muy lindos y tiernos, pero requieren de mucho tiempo y 
@@ -30,7 +30,7 @@ const RecomendacionScreen = () => {
          calmados. Cuando ya son adultos mayores puede que no duren mucho tiempo pero hay ser consientes que 
          ellos merecen un hogar y son la mejor compañía.
           </Text>
-        <Image source={require('./recomendaciones/perritocon_gato.PNG')} style={styles.image} />
+        <Image source={require('../../../../assets/recomendaciones/perritocon_gato.png')} style={styles.image} />
         <Text style={styles.text}>
         Si tu decisión es sí y te sientes listo para recibir un nuevo integrante en la familia, estos son 
         los pasos a seguir:
@@ -46,7 +46,7 @@ const RecomendacionScreen = () => {
         🐾 Los adoptantes deben asumir los gastos básicos como los son: esterilización, vacunas y 
         desparasitación.
          </Text>
-         <Image source={require('./recomendaciones/perrito_solo.PNG')} style={styles.image} />
+         <Image source={require('../../../../assets/recomendaciones/perrito_solo.png')} style={styles.image} />
 
          </View>
 
