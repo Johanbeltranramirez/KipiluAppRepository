@@ -19,15 +19,14 @@ export const RoundedButton = ({ text, onPress }: Props) => {
 
 const styles = StyleSheet.create({
   roundedButton: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#9999CC",
-    width: "90%",
-    height: 50,
-    marginHorizontal: 15,
+    justifyContent: "center", 
+    alignItems: "center", 
+    backgroundColor: "#9999CC", 
+    width: 300, 
+    height: 50, 
+    marginHorizontal: 15, 
+    marginBottom: 10, 
     borderRadius: 10,
-    marginBottom: 8,
-    marginTop: 10,
   },
   textButton: {
     color: "#ffff",

@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
+    backgroundColor: '#D6D5D5',
   },
   datosAnimal: {
     marginLeft: 20,

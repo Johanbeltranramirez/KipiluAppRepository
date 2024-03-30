@@ -5,20 +5,24 @@ import {
   View,
   SafeAreaView,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Dimensions
 } from 'react-native';
 import useViewModel from './ViewModel';
 import { CustomTextInput } from '../../components/components-formulario/CustomTextInput';
 import { RoundedButton } from '../../components/components-formulario/RoundedButton'; 
 import { useNavigation } from '@react-navigation/native';
 
+const windowWidth = Dimensions.get('window').width;
+
 export const FormularioScreen = () => {
-  const navigation =useNavigation();
+  const navigation = useNavigation();
 
   const handlePress = () => {
-  const screenName = 'recomendaciones';
-  navigation.navigate(screenName as never);
+    const screenName = 'recomendaciones';
+    navigation.navigate(screenName as never);
   }
+
   const { ID_Adoptante, P_Nombre, S_Nombre, P_Apellido, S_Apellido, Correo, Direccion, Telefono, ID_Animal, onChange, formulario } = useViewModel();
   
   return (
@@ -35,112 +39,113 @@ export const FormularioScreen = () => {
             <View>
               <Text style={styles.texts}>Primer Nombre</Text>
               <View style={styles.contentInput}>
-              <CustomTextInput 
-                placeholder='Primer Nombre'
-                keyboardType='default'
-                property='P_Nombre'
-                onChangeText={onChange}
-                value={P_Nombre}
-              />
+                <CustomTextInput 
+                  placeholder='Primer Nombre'
+                  keyboardType='default'
+                  property='P_Nombre'
+                  onChangeText={onChange}
+                  value={P_Nombre}
+                />
               </View>
             </View>
             <View>
               <Text style={styles.texts}>Segundo Nombre</Text>
               <View style={styles.contentInput}>
-              <CustomTextInput 
-                placeholder='Segundo Nombre'
-                keyboardType='default'
-                property='S_Nombre'
-                onChangeText={onChange}
-                value={S_Nombre}
-              />
+                <CustomTextInput 
+                  placeholder='Segundo Nombre'
+                  keyboardType='default'
+                  property='S_Nombre'
+                  onChangeText={onChange}
+                  value={S_Nombre}
+                />
               </View>
             </View>
             <View>
               <Text style={styles.texts}>Primer Apellido</Text>
               <View style={styles.contentInput}>
-              <CustomTextInput 
-                placeholder='Primer Apellido'
-                keyboardType='default'
-                property='P_Apellido'
-                onChangeText={onChange}
-                value={P_Apellido}
-              />
+                <CustomTextInput 
+                  placeholder='Primer Apellido'
+                  keyboardType='default'
+                  property='P_Apellido'
+                  onChangeText={onChange}
+                  value={P_Apellido}
+                />
               </View>
             </View>
             <View>
               <Text style={styles.texts}>Segundo Apellido</Text>
               <View style={styles.contentInput}>
-              <CustomTextInput 
-                placeholder='Segundo Apellido'
-                keyboardType='default'
-                property='S_Apellido'
-                onChangeText={onChange}
-                value={S_Apellido}
-              /></View>
+                <CustomTextInput 
+                  placeholder='Segundo Apellido'
+                  keyboardType='default'
+                  property='S_Apellido'
+                  onChangeText={onChange}
+                  value={S_Apellido}
+                />
+              </View>
             </View>
             <View>
               <Text style={styles.texts}>Cédula</Text>
               <View style={styles.contentInput}>
-              <CustomTextInput 
-                placeholder='Ejemplo: CC54262122'
-                keyboardType='default'
-                property='ID_Adoptante'
-                onChangeText={onChange}
-                value={ID_Adoptante}
-              />
+                <CustomTextInput 
+                  placeholder='Ejemplo: CC54262122'
+                  keyboardType='default'
+                  property='ID_Adoptante'
+                  onChangeText={onChange}
+                  value={ID_Adoptante}
+                />
               </View>
             </View>
             <View>
               <Text style={styles.texts}>Correo</Text>
               <View style={styles.contentInput}>
-              <CustomTextInput 
-                placeholder='Ingrese su correo' 
-                keyboardType='email-address'
-                property='Correo'
-                onChangeText={onChange}
-                value={Correo}              
-              /> 
+                <CustomTextInput 
+                  placeholder='Ingrese su correo' 
+                  keyboardType='email-address'
+                  property='Correo'
+                  onChangeText={onChange}
+                  value={Correo}              
+                /> 
               </View>
             </View> 
             <View>
               <Text style={styles.texts}>Dirección</Text>
               <View style={styles.contentInput}>
-              <CustomTextInput 
-                placeholder='Ingrese su dirección'
-                keyboardType='default'
-                property='Direccion'
-                onChangeText={onChange}
-                value={Direccion}
-              />
+                <CustomTextInput 
+                  placeholder='Ingrese su dirección'
+                  keyboardType='default'
+                  property='Direccion'
+                  onChangeText={onChange}
+                  value={Direccion}
+                />
               </View>
             </View>
             <View>
               <Text style={styles.texts}>Teléfono</Text>
               <View style={styles.contentInput}>
-              <CustomTextInput 
-                placeholder='Ingrese su N° telefónico o Cl' 
-                keyboardType='numeric'
-                property='Telefono'
-                onChangeText={onChange}
-                value={Telefono}
-              />
+                <CustomTextInput 
+                  placeholder='Ingrese su N° telefónico o Cl' 
+                  keyboardType='numeric'
+                  property='Telefono'
+                  onChangeText={onChange}
+                  value={Telefono}
+                />
               </View>
             </View>
             <View>
               <Text style={styles.texts}>ID Animal</Text>
               <View style={styles.contentInput}>
-              <CustomTextInput 
-                placeholder='Ejemplo: 1'
-                keyboardType='default'
-                property='ID_Animal'
-                onChangeText={onChange}
-                value={ID_Animal}
-              />
+                <CustomTextInput 
+                  placeholder='Ejemplo: 1'
+                  keyboardType='default'
+                  property='ID_Animal'
+                  onChangeText={onChange}
+                  value={ID_Animal}
+                />
               </View>
             </View>
-            <View style={styles.btn}>
-              <RoundedButton  text='Enviar' onPress={formulario} />
+            <View>
+              <RoundedButton text='Enviar' onPress={formulario} />
             </View>
             <View>
               <TouchableOpacity onPress={handlePress} style={styles.btn2}>
@@ -155,92 +160,69 @@ export const FormularioScreen = () => {
 };
 
 const styles = StyleSheet.create({ 
-
   container: { 
     backgroundColor: "#ffff", 
     flex: 1, 
-    paddingTop: 20, 
-    paddingHorizontal: 20, 
-    marginBottom: 10, 
+    paddingTop: 0.03 * windowWidth, 
+    paddingHorizontal: 0.03 * windowWidth, 
+    marginBottom: 0.01 * windowWidth, 
   }, 
-
   body: { 
     justifyContent: 'center', 
     alignItems: 'center', 
   }, 
-
-  box:{ 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      borderRadius: 10, 
-      borderWidth: 1, 
-      borderColor: '#996633', 
-      marginBottom: 6, 
-      marginTop: 8, 
-      marginHorizontal: 2, 
-  }, 
-
-  bienvenid: { 
-    fontSize: 20, 
-    fontWeight: 'bold', 
-    color: "black", 
+  box: { 
     justifyContent: 'center', 
     alignItems: 'center', 
-    marginTop: 7, 
+    borderRadius: 0.03 * windowWidth, 
+    borderWidth: 0.004 * windowWidth, 
+    borderColor: '#996633', 
+    marginBottom: 0.005 * windowWidth, 
+    marginTop: 0.006 * windowWidth, 
+    marginHorizontal: 0.02 * windowWidth, 
+  }, 
+  bienvenid: { 
+    fontSize: 0.05 * windowWidth, 
+    fontWeight: 'bold', 
+    color: "#4C73BF", 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    marginTop: 0.02 * windowWidth, 
     textAlign: "center", 
   }, 
-
-  contentInput:{ 
-    width: 320,
-    height: 38, 
+  contentInput: { 
+    width: 0.8 * windowWidth, 
+    height: 0.10 * windowWidth, 
     borderColor: "#996633", 
-    borderWidth: 1, 
-    borderRadius: 10, 
+    borderWidth: 0.004 * windowWidth, 
+    borderRadius: 0.03 * windowWidth, 
     justifyContent: "center", 
-    paddingLeft: 5, 
-    marginBottom: 8, 
-    marginHorizontal: 10, 
-    marginVertical: 5, 
+    paddingLeft: 0.02 * windowWidth, 
+    marginBottom: 0.03 * windowWidth, 
+    marginHorizontal: 0.03 * windowWidth, 
   }, 
-
-
-  texts:{ 
+  texts: { 
     color: "#4C73BF", 
-    fontSize: 18, 
+    fontSize: 0.04 * windowWidth, 
     marginBottom: 1,
-    marginTop: 2, 
-    marginHorizontal: 12, 
+    marginTop: 0.002 * windowWidth, 
+    marginHorizontal: 0.04 * windowWidth, 
   }, 
-
-  btn:{ 
-    justifyContent: "center", 
-    alignItems: "center", 
-    backgroundColor: "#9999CC", 
-    width: 120, 
-    height: 50, 
-    marginHorizontal: 15, 
-    borderRadius: 10, 
-    marginBottom: 8, 
-    marginTop: 10, 
-  }, 
-
-  btn2:{ 
+  btn2: { 
     justifyContent: "center", 
     alignItems: "center", 
     backgroundColor: "#99CCCC", 
-    width: 190, 
+    width: 300, 
     height: 50, 
     marginHorizontal: 15, 
     marginBottom: 10, 
-    borderRadius: 10, 
+    borderRadius: 10,
   }, 
-
-  textBtn:{
+  textBtn: { 
     color: "#ffff", 
-    fontSize: 18, 
+    fontSize: 0.04 * windowWidth, 
     fontWeight: "500", 
   }, 
-   
 }); 
 
 export default FormularioScreen;
