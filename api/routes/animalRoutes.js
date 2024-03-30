@@ -9,4 +9,10 @@ module.exports = (app) => {
 
   // Ruta para obtener animales por especie
   app.get('/api/animales/especie/:especieId', animalController.getAllAnimalsBySpecies);
+
+  // Ruta para desactivar un animal por su ID
+  app.delete('/api/animales/eliminar/:id', animalController.deactivateAnimal); // Corrección: Se añade /:id al final de la ruta
+
+  // Ruta para actualizar un animal por su ID
+  app.put('/api/animales/actualizar/:id', animalController.updateAnimal); // Se añade la ruta para actualizar un animal
 };

@@ -1,6 +1,8 @@
 const Animal = require('../models/animal');
 const AnimalGet = require('../models/animalget'); // Renombramos el segundo módulo como AnimalGet
 const AnimalId = require('../models/animalid'); // Importamos el modelo animalid
+const AnimalDel = require('../models/animaldelete'); // Importamos el modelo animaldelete
+const AnimalUpdate = require('../models/animalupdate'); // Importamos el modelo animalupdate
 
 module.exports = {
   createAnimal(req, res) {
@@ -52,6 +54,43 @@ module.exports = {
         success: true,
         message: 'Animales obtenidos por especie correctamente',
         data: animals // Datos de todos los animales que cumplen con la especie especificada
+      });
+    });
+  },
+
+  // Método para desactivar un animal por su ID
+  deactivateAnimal(req, res) {
+    const animalId = req.params.id; // Obtén el ID del animal de los parámetros de la solicitud
+    AnimalDel.delete(animalId, (err, result) => { // Desactiva el animal utilizando el módulo AnimalDel
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          message: 'Error al desactivar el animal',
+          error: err
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        message: result.message // Mensaje de éxito
+      });
+    });
+  },
+
+  // Método para actualizar un animal por su ID
+  updateAnimal(req, res) {
+    const animalId = req.params.id; // Obtén el ID del animal de los parámetros de la solicitud
+    const newData = req.body; // Nuevos datos del animal
+    AnimalUpdate.update(animalId, newData, (err, result) => { // Actualiza el animal utilizando el módulo AnimalUpdate
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          message: 'Error al actualizar el animal',
+          error: err
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        message: result.message // Mensaje de éxito
       });
     });
   }
