@@ -5,15 +5,15 @@ const Adoptante = {};
 Adoptante.create = (adoptante, result) => {
   const sql = `
     INSERT INTO Adoptantes (
-      ID_Adoptante,
+      ID_Adoptante: 'number',
       P_Nombre,
       S_Nombre,
       P_Apellido,
       S_Apellido,
       Correo,
       Direccion,
-      Telefono,
-      ID_Animal
+      Telefono: 'number',
+      ID_Animal: 'number'
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)
   `;
 
