@@ -56,7 +56,7 @@ export const FormularioScreen = () => {
                   keyboardType='default'
                   property='S_Nombre'
                   onChangeText={onChange}
-                  value={S_Nombre}
+                  value={S_Nombre ? S_Nombre.toString() : ''}
                 />
               </View>
             </View>
@@ -80,7 +80,7 @@ export const FormularioScreen = () => {
                   keyboardType='default'
                   property='S_Apellido'
                   onChangeText={onChange}
-                  value={S_Apellido}
+                  value={S_Apellido ? S_Apellido.toString() : ''}
                 />
               </View>
             </View>
@@ -88,11 +88,11 @@ export const FormularioScreen = () => {
               <Text style={styles.texts}>Cédula</Text>
               <View style={styles.contentInput}>
                 <CustomTextInput 
-                  placeholder='Ejemplo: CC54262122'
+                  placeholder='Ejemplo: 54262122'
                   keyboardType='default'
                   property='ID_Adoptante'
                   onChangeText={onChange}
-                  value={ID_Adoptante}
+                  value={ID_Adoptante.toString()}
                 />
               </View>
             </View>
@@ -128,7 +128,7 @@ export const FormularioScreen = () => {
                   keyboardType='numeric'
                   property='Telefono'
                   onChangeText={onChange}
-                  value={Telefono}
+                  value={Telefono.toString()}
                 />
               </View>
             </View>
@@ -137,10 +137,10 @@ export const FormularioScreen = () => {
               <View style={styles.contentInput}>
                 <CustomTextInput 
                   placeholder='Ejemplo: 1'
-                  keyboardType='default'
+                  keyboardType='numeric'
                   property='ID_Animal'
                   onChangeText={onChange}
-                  value={ID_Animal}
+                  value={ID_Animal.toString()}
                 />
               </View>
             </View>
