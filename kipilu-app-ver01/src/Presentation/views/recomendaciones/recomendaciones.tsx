@@ -4,8 +4,9 @@ import { Image } from 'react-native-elements';
 
 const RecomendacionScreen = () => {
     return (
+
         <ScrollView contentContainerStyle={styles.container}>
-            <Text style={styles.title}>Recomendaciones</Text>
+            <Text style={styles.title}>{'\n'}Recomendaciones</Text>
 
             <Text style={styles.text}>
                 El acto de adoptar es un compromiso serio que implica responsabilidad por un período de 15 a 20 años,
@@ -32,15 +33,18 @@ const RecomendacionScreen = () => {
             <Text style={styles.text}>
                 Si tu decisión es sí y te sientes listo para recibir un nuevo integrante en la familia, estos son
                 los pasos a seguir:
-
+                {'\n'}
+                {'\n'}
                 🐾 Debes llenar el formulario de adopción en su totalidad, este formulario se encuentra en la parte
-                del catálogo, cuando le das "click" en el botón "Iniciar adopción" que está en cada información del
+                del catálogo, cuando le das "click" encima de la información del
                 animal.
-
+                {'\n'}
+                {'\n'}                
                 🐾 Si tu formulario es aprobado te contactaremos por medio de correo para programar una entrevista
                 virtual de adopción, en donde tendremos una charla de tenencia responsable y esperamos conocerte más
                 a fondo; al igual que ver el espacio donde viviría el animal.
-
+                {'\n'}
+                {'\n'}                
                 🐾 Los adoptantes deben asumir los gastos básicos como los son: esterilización, vacunas y
                 desparasitación.
             </Text>
@@ -62,6 +66,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: 'sans-serif',
         marginBottom: 20,
+        color: '#f9a073',
     },
     text: {
         fontSize: 16,
