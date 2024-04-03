@@ -2,43 +2,42 @@ import React, { useState } from 'react';
 import { ApiKipilu } from '../../Data/sources/remote/api/ApiKipilu';
 
 interface FormValues {
-  ID_Adoptante: number; 
+  ID_Adoptante: string; 
   P_Nombre: string;
   S_Nombre?: string;
   P_Apellido: string;
   S_Apellido?: string;
   Correo: string;
   Direccion: string;
-  Telefono: number;
-  ID_Animal: number;
+  Telefono: string;
+  ID_Animal: string;
 }
 
 const RegisterViewModel = () => {
   const [values, setValues] = useState<FormValues>({
-    ID_Adoptante: 0,
+    ID_Adoptante: '',
     P_Nombre: '',
     S_Nombre: '',
     P_Apellido: '',
     S_Apellido: '',
     Correo: '',
     Direccion: '',
-    Telefono: 0,
-    ID_Animal: 0 
+    Telefono: '',
+    ID_Animal: ''
   });
 
-  const onChange = (property: string, value: string) => {
+  const onChange = (property: string, value: any) => {
     setValues({ ...values, [property]: value });
   }
 
   const formulario = async () => {
     try {
-    const response = await ApiKipilu.post('/users/adoptantes', values);
-    console.log('RESPONSE: ' + JSON.stringify(response));
-   
+      const response = await ApiKipilu.post('/users/adoptantes', values);
+      console.log('RESPONSE: ' + JSON.stringify(response));
     } catch (error) {
-    console.log('ERROR: ' + error);
+      console.log('ERROR: ' + error);
     }
-    } 
+  } 
 
   return {
     ...values,
