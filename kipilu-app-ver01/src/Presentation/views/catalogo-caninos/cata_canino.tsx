@@ -1,10 +1,9 @@
-// CataFelinoScreen.tsx
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AnimalsViewModel, { Animal } from './ViewModel'; // Importa el ViewModel y el tipo Animal
 
-const CataCaninoScreen = () => {
+const CataFelinoScreen = () => {
   const navigation = useNavigation();
   const { fetchAnimals } = AnimalsViewModel();
   const [animals, setAnimals] = useState<Animal[]>([]); // Estado para almacenar los animales
@@ -19,15 +18,14 @@ const CataCaninoScreen = () => {
 
   const handleAnimalPress = (animal: Animal) => {
     const screenName = 'formulario';
-    console.log('Has hecho clic en el animal con ID:', animal.ID_Animal);
-    navigation.navigate(screenName as never);
+    navigation.navigate(screenName, { animalId: animal.ID_Animal });
   };
 
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
         <View style={styles.body}>
-          <Text style={styles.bienvenido}>Bienvenido al catálogo de felinos</Text>
+          <Text style={styles.bienvenido}>Bienvenido al catálogo de caninos</Text>
           <Text style={styles.subtitulo}>Si estás interesado en alguno, simplemente haz clic sobre él.</Text>
         </View>
         
@@ -108,4 +106,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CataCaninoScreen;
+export default CataFelinoScreen;

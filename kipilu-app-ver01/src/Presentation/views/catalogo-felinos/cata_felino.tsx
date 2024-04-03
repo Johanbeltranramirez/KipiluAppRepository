@@ -1,4 +1,3 @@
-// CataFelinoScreen.tsx
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -19,8 +18,7 @@ const CataFelinoScreen = () => {
 
   const handleAnimalPress = (animal: Animal) => {
     const screenName = 'formulario';
-    console.log('Has hecho clic en el animal con ID:', animal.ID_Animal);
-    navigation.navigate(screenName as never);
+    navigation.navigate(screenName, { animalId: animal.ID_Animal });
   };
 
   return (

@@ -88,8 +88,8 @@ export const FormularioScreen = () => {
               <Text style={styles.texts}>Cédula</Text>
               <View style={styles.contentInput}>
                 <CustomTextInput 
-                  placeholder='Ejemplo: 54262122'
-                  keyboardType='default'
+                  placeholder='Ejemplo: 108263524312'
+                  keyboardType='numeric'
                   property='ID_Adoptante'
                   onChangeText={onChange}
                   value={ID_Adoptante.toString()}
