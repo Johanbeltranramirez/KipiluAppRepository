@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   ScrollView,
   TouchableOpacity,
+  ToastAndroid,
   Dimensions
 } from 'react-native';
 import useViewModel from './ViewModel';
@@ -144,9 +145,13 @@ export const FormularioScreen = () => {
                 />
               </View>
             </View>
-            <View>
-              <RoundedButton text='Enviar' onPress={formulario} />
-            </View>
+            <RoundedButton
+               text='Enviar'
+               onPress={() => {
+               formulario(); // Llama a la función formulario
+              ToastAndroid.show('FORMULARIO ENVIADO...\nGRACIAS POR SU ADOPCIÓN!', ToastAndroid.SHORT);
+            }}
+          />
             <View>
               <TouchableOpacity onPress={handlePress} style={styles.btn2}>
                 <Text style={styles.textBtn}>Volver al inicio</Text>

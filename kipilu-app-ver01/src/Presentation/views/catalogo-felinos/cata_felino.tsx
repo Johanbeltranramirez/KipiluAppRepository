@@ -16,10 +16,10 @@ const CataFelinoScreen = () => {
     getAnimals();
   }, []);
 
-  const handleAnimalPress = (animal: Animal) => {
+const handleAnimalPress = () => {
     const screenName = 'formulario';
-    navigation.navigate(screenName, { animalId: animal.ID_Animal });
-  };
+    navigation.navigate(screenName as never);
+  }
 
   return (
     <ScrollView>
@@ -31,7 +31,7 @@ const CataFelinoScreen = () => {
         
         {/* Renderizar las cartas de animales */}
         {animals.map((animal, index) => (
-          <TouchableOpacity key={index} style={styles.carta} onPress={() => handleAnimalPress(animal)}>
+          <TouchableOpacity key={index} style={styles.carta} onPress={() => handleAnimalPress()}>
             <Image
               source={{ uri: animal.Imagen }} // Usar la URL de la imagen del animal
               style={styles.imagenAnimal}

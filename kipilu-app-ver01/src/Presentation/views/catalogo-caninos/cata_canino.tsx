@@ -16,10 +16,10 @@ const CataFelinoScreen = () => {
     getAnimals();
   }, []);
 
-  const handleAnimalPress = (animal: Animal) => {
+  const handleAnimalPress = () => {
     const screenName = 'formulario';
-    navigation.navigate(screenName, { animalId: animal.ID_Animal });
-  };
+    navigation.navigate(screenName as never);
+  }
 
   return (
     <ScrollView>
