@@ -4,27 +4,27 @@ const Animal = {};
 
 Animal.create = (animal, result) => {
   const sql = `
-    INSERT INTO animales (
-      Nombre,
-      Raza,
+    INSERT INTO Animales (
+      Nombre_Animal,
+      Razas,
       Sexo,
-      Edad,
-      ID_Estado,
-      ID_Especie,
-      Imagen
+      Foto,
+      Descripcion,
+      Especie_Animal,
+      Estado_Animal
     ) VALUES (?, ?, ?, ?, ?, ?, ?)
   `;
 
   db.query(
     sql,
     [
-      animal.nombre,
-      animal.raza,
-      animal.sexo,
-      animal.edad,
-      animal.ID_Estado,
-      animal.ID_Especie, // Nuevo campo para la especie
-      animal.imagen
+      animal.Nombre_Animal,
+      animal.Razas,
+      animal.Sexo,
+      animal.Foto,
+      animal.Descripcion,
+      animal.Especie_Animal,
+      animal.Estado_Animal,
     ],
     (err, res) => {
       if (err) {

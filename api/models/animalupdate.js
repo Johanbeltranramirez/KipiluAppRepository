@@ -4,22 +4,22 @@ const AnimalUpdate = {};
 
 // Método para actualizar un animal por su ID
 AnimalUpdate.update = (animalId, animalData, result) => {
-  const { nombre, raza, sexo, edad, ID_Estado, ID_Especie, imagen } = animalData;
+  const { Nombre_Animal, Razas, Sexo, Foto, Descripcion, Especie_Animal, Estado_Animal } = animalData;
   
   const sql = `
-    UPDATE animales
+    UPDATE Animales
     SET 
-      Nombre = ?,
-      Raza = ?,
+      Nombre_Animal = ?,
+      Razas = ?,
       Sexo = ?,
-      Edad = ?,
-      ID_Estado = ?,
-      ID_Especie = ?,
-      Imagen = ?
+      Foto = ?,
+      Descripcion = ?,
+      Especie_Animal = ?,
+      Estado_Animal = ?
     WHERE ID_Animal = ?
   `;
 
-  db.query(sql, [nombre, raza, sexo, edad, ID_Estado, ID_Especie, imagen, animalId], (err, res) => {
+  db.query(sql, [Nombre_Animal, Razas, Sexo, Foto, Descripcion, Especie_Animal, Estado_Animal, animalId], (err, res) => {
     if (err) {
       console.log('Error al actualizar el animal: ', err);
       result(err, null);
