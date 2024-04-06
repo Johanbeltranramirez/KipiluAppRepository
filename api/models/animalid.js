@@ -4,9 +4,10 @@ const Animalid = {};
 
 Animalid.selectAllBySpecies = (especieId, result) => {
   const sql = `
-    SELECT Animales.*, Especies.Especie_Animal
+    SELECT Animales.*, Especies.Especie_Animal, Razas.Nombre_Raza
     FROM Animales
     INNER JOIN Especies ON Animales.Especie_Animal = Especies.ID_Especie
+    INNER JOIN Razas ON Animales.Razas = Razas.ID_Raza
     WHERE Animales.Especie_Animal = ?
     AND Animales.Estado_Animal != 1;
   `;
