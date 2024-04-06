@@ -4,11 +4,11 @@ const Animalid = {};
 
 Animalid.selectAllBySpecies = (especieId, result) => {
   const sql = `
-    SELECT animales.*, Especies.Nombre_Especie
-    FROM animales
-    INNER JOIN Especies ON animales.ID_Especie = Especies.ID_Especie
-    WHERE animales.ID_Especie = ?
-    AND animales.ID_Estado != 1;
+    SELECT Animales.*, Especies.Especie_Animal
+    FROM Animales
+    INNER JOIN Especies ON Animales.Especie_Animal = Especies.ID_Especie
+    WHERE Animales.Especie_Animal = ?
+    AND Animales.Estado_Animal != 1;
   `;
 
   db.query(sql, [especieId], (err, res) => {
