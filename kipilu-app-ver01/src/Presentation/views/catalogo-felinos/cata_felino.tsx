@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   bienvenido: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#CB8E46',
+    color: '#47979F',
     marginBottom: 10,
   },
   subtitulo: {
