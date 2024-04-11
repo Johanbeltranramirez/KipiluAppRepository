@@ -18,7 +18,7 @@ export interface Animal {
 const AnimalsViewModel = () => {
   const fetchAnimals = async () => {
     try {
-      const response = await axios.get('http://192.168.1.6:3000/api/animales/especie/2');
+      const response = await axios.get('http://192.168.101.9:3000/api/animales/especie/2');
       const animalsData = response.data.data.map((animal: any) => {
         return {
           ...animal,
