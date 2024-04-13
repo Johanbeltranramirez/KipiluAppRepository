@@ -39,7 +39,7 @@ const CataFelinoScreen = () => {
     <ScrollView>
       <SafeAreaView style={styles.container}>
         <View style={styles.body}>
-          <Text style={styles.bienvenido}>Bienvenido al catálogo de felinos</Text>
+          <Text style={styles.bienvenido}>Bienvenido al catálogo de caninos</Text>
           <Text style={styles.subtitulo}>Si estás interesado en alguno, simplemente haz clic sobre él.{'\n'}{'\n'}
           Si una animal se muestra en una tarjeta con borde amarillo, significa que está en proceso con otra persona y no está disponible para adopción hasta que cambie su estado.</Text>
         </View>
