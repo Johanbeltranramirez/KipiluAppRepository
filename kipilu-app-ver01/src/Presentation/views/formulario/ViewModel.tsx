@@ -10,7 +10,6 @@ interface FormValues {
   Correo: string;
   Direccion: string;
   Telefono: string;
-  ID_Animal: string;
 }
 
 const RegisterViewModel = () => {
@@ -23,7 +22,6 @@ const RegisterViewModel = () => {
     Correo: '',
     Direccion: '',
     Telefono: '',
-    ID_Animal: ''
   });
 
   const onChange = (property: string, value: any) => {
@@ -32,12 +30,17 @@ const RegisterViewModel = () => {
 
   const formulario = async () => {
     try {
-      const response = await ApiKipilu.post('/users/adoptantes', values);
-      console.log('RESPONSE: ' + JSON.stringify(response));
+        // Primera inserción para registrar un nuevo adoptante
+        const ResponseAdoptante = await ApiKipilu.post('/users/adoptantes', values);
+        console.log('RESPONSE (adoptante):' + JSON.stringify(ResponseAdoptante));
+        
+        // Segunda inserción para crear un nuevo formulario
+        const ResponseFormulario = await ApiKipilu.post('/formularios/create', values);
+        console.log('RESPONSE (formulario):' + JSON.stringify(ResponseFormulario));
     } catch (error) {
-      console.log('ERROR: ' + error);
+        console.log('ERROR:'+ error);
     }
-  } 
+};
 
   return {
     ...values,

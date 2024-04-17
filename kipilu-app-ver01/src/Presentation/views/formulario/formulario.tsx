@@ -24,7 +24,7 @@ export const FormularioScreen = () => {
     navigation.navigate(screenName as never);
   }
 
-  const { ID_Adoptante, P_Nombre, S_Nombre, P_Apellido, S_Apellido, Correo, Direccion, Telefono, ID_Animal, onChange, formulario } = useViewModel();
+  const { ID_Adoptante, P_Nombre, S_Nombre, P_Apellido, S_Apellido, Correo, Direccion, Telefono, onChange, formulario } = useViewModel();
 
   return (
       <ScrollView>
@@ -141,7 +141,7 @@ export const FormularioScreen = () => {
                         keyboardType='numeric'
                         property='ID_Animal'
                         onChangeText={onChange}
-                        value={ID_Animal.toString()}
+                        value={toString()}
                     />
                   </View>
                 </View>

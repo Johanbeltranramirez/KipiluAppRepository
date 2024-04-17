@@ -12,9 +12,8 @@ Adoptante.create = (adoptante, result) => {
       S_Apellido,
       Correo,
       Direccion,
-      Telefono,
-      ID_Animal
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      Telefono
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   db.query(
@@ -28,7 +27,6 @@ Adoptante.create = (adoptante, result) => {
       adoptante.Correo,
       adoptante.Direccion,
       adoptante.Telefono,
-      adoptante.ID_Animal
     ],
     (err, res) => {
       if (err) {
@@ -43,3 +41,4 @@ Adoptante.create = (adoptante, result) => {
 };
 
 module.exports = Adoptante;
+

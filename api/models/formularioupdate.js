@@ -1,9 +1,9 @@
 const db = require('../config/config');
 
-const formulario_update = {};
+const formularioupdate = {};
 
 //Método para poder actualizar un formulario
-formulario_update.update = (IdForm, FormData, result) => {
+formularioupdate.update = (IdForm, FormData, result) => {
   const { Adoptante, Animal, Validacion_Donativo, Estado_Solicitud, Administrador} = FormData;
   
   const sql = `
@@ -28,4 +28,4 @@ formulario_update.update = (IdForm, FormData, result) => {
   });
 };
 
-module.exports = formulario_update;
+module.exports = formularioupdate;

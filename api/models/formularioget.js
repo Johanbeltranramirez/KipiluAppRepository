@@ -1,8 +1,8 @@
 const db = require('../config/config');
 
-const formulario_get = {};
+const formularioget = {};
 
-formulario_get.getAll = (result) => {
+formularioget.getAll = (result) => {
   const sql = `SELECT * FROM formularios`;
 
   db.query(sql, (err, forms) => {
@@ -16,4 +16,4 @@ formulario_get.getAll = (result) => {
   });
 };
 
-module.exports = formulario_get;
+module.exports = formularioget;

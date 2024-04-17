@@ -7,6 +7,7 @@ const cors = require('cors');
 // Importar rutas
 const animalRoutes = require('./routes/animalRoutes');
 const usersRoutes = require('./routes/usersRouters');
+const formularioRoutes = require('./routes/formularioRoutes');
 
 const port = process.env.PORT || 3000;
 app.use(logger('dev'));
@@ -19,6 +20,7 @@ app.set('port', port);
 // LLamando las rutas
 animalRoutes(app);
 usersRoutes(app);
+formularioRoutes(app);
 
 
 // Dirección IP V4 de la máquina, consultar con ipconfig
