@@ -36,7 +36,7 @@ const CataFelinoScreen = () => {
   }
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "#ffffff" }}>
       <SafeAreaView style={styles.container}>
         <View style={styles.body}>
           <Text style={styles.bienvenido}>Bienvenido al catálogo de caninos</Text>
