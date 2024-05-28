@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { MaterialIcons, FontAwesome6, FontAwesome5 } from '@expo/vector-icons';
+import { RootStackParamList } from './types';
 
 // Importaciones de las pantallas
 import CaninosScreen from '../views/catalogo-caninos/caninos';
@@ -13,7 +14,7 @@ import CataCaninoScreen from '../views/catalogo-caninos/cata_canino';
 import FormularioScreen from '../views/formulario/formulario'
 
 // Creación del navegador de pilas (stack navigator) para las pantallas de los catálogos
-const CatalogStackNavigator = createNativeStackNavigator();
+const CatalogStackNavigator = createNativeStackNavigator<RootStackParamList>();
 
 // Componente para el catálogo de caninos
 const CaninosStack = () => {
@@ -33,12 +34,12 @@ const CaninosStack = () => {
         name="formulario" 
         component={FormularioScreen}
         options={{ headerTitle: '' }}
+        initialParams={{ ID_Animal: 0 }} 
       />
     </CatalogStackNavigator.Navigator>
   );
 }
 
-// Componente para el catálogo de felinos
 const FelinosStack = () => {
   return (
     <CatalogStackNavigator.Navigator>
@@ -56,6 +57,7 @@ const FelinosStack = () => {
         name="formulario" 
         component={FormularioScreen}
         options={{ headerTitle: '' }}
+        initialParams={{ ID_Animal: 0 }} 
       />
     </CatalogStackNavigator.Navigator>
   );

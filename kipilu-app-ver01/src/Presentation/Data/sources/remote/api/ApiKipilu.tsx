@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const ApiKipilu = axios.create({
 
-  baseURL: 'http://192.168.101.9:3000/api',
+  baseURL: 'https://kipilubackendrepository-2.onrender.com/api',
   headers: {
   'Content-Type': 'application/json'
  }

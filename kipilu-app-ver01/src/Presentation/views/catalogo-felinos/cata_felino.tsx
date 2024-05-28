@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AnimalsViewModel, { Animal } from './ViewModel';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../components/types';
+
+type CataFelinoScreenNavigationProp = StackNavigationProp<RootStackParamList, 'cata_felino'>;
 
 const CataFelinoScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<CataFelinoScreenNavigationProp>();
   const { fetchAnimals } = AnimalsViewModel();
   const [animals, setAnimals] = useState<Animal[]>([]);
 
@@ -17,12 +21,11 @@ const CataFelinoScreen = () => {
     getAnimals();
   }, []);
 
-  const handleAnimalPress = (estado: string) => {
-    if (parseInt(estado) !== 3) { // Permitir la navegación solo si el estado no es 'En proceso'
-      const screenName = 'formulario';
-      navigation.navigate(screenName as never);
+  const handleAnimalPress = (animal: Animal) => {
+    if (parseInt(animal.Estado_Animal) !== 3) { // Permitir la navegación solo si el estado no es 'En proceso'
+      navigation.navigate('formulario', { ID_Animal: animal.ID_Animal });
     }
-  }
+  } 
 
   const getBorderColor = (estado: string) => {
     switch (parseInt(estado)) {
@@ -44,11 +47,11 @@ const CataFelinoScreen = () => {
           Si una animal se muestra en una tarjeta con borde amarillo, significa que está en proceso con otra persona y no está disponible para adopción hasta que cambie su estado.</Text>
         </View>
         
-        {animals.map((animal, index) => (
-          <TouchableOpacity 
+          {animals.map((animal, index) => (
+            <TouchableOpacity 
             key={index} 
             style={[styles.carta, { borderColor: getBorderColor(animal.Estado_Animal) }]} 
-            onPress={() => handleAnimalPress(animal.Estado_Animal)}
+            onPress={() => handleAnimalPress(animal)}
             disabled={parseInt(animal.Estado_Animal) === 3} // Deshabilitar la tarjeta si está en proceso
           >
             <Image
@@ -56,6 +59,7 @@ const CataFelinoScreen = () => {
               style={styles.imagenAnimal}
             />
             <View style={styles.datosAnimal}>
+            <Text style={{...styles.textoAnimal, display: 'none'}}>{animal.ID_Animal}</Text>
               <Text style={styles.textoAnimal}>Nombre: {animal.Nombre_Animal}</Text>
               <Text style={styles.textoAnimal}>Raza: {animal.Raza}</Text>
               <Text style={styles.textoAnimal}>Sexo: {parseInt(animal.Sexo) === 1 ? 'Hembra' : 'Macho'}</Text>

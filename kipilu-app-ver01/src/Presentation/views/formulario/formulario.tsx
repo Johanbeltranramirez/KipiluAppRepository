@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,19 +12,28 @@ import {
 import useViewModel from './ViewModel';
 import { CustomTextInput } from '../../components/components-formulario/CustomTextInput';
 import { RoundedButton } from '../../components/components-formulario/RoundedButton';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { RootStackParamList } from '../../components/types';
 
 const windowWidth = Dimensions.get('window').width;
 
+type FormularioScreenRouteProp = RouteProp<RootStackParamList, 'formulario'>;
+
 export const FormularioScreen = () => {
   const navigation = useNavigation();
+  const route = useRoute<FormularioScreenRouteProp>();
+  const { ID_Animal } = route.params;
+
+  const { ID_Adoptante, P_Nombre, S_Nombre, P_Apellido, S_Apellido, Correo, Direccion, Telefono, onChange, formulario, setAnimalId } = useViewModel();
+
+  useEffect(() => {
+    setAnimalId(ID_Animal);
+  }, [ID_Animal]);
 
   const handlePress = () => {
     const screenName = 'recomendaciones';
     navigation.navigate(screenName as never);
   }
-
-  const { ID_Adoptante, P_Nombre, S_Nombre, P_Apellido, S_Apellido, Correo, Direccion, Telefono, onChange, formulario } = useViewModel();
 
   return (
       <ScrollView>
@@ -42,7 +51,7 @@ export const FormularioScreen = () => {
                 <Text style={styles.texts}>Primer Nombre *</Text>
                 <View style={styles.contentInput}>
                   <CustomTextInput
-                      placeholder='Digite su primer nombre'
+                      placeholder='Digite su primer nombre *'
                       keyboardType='default'
                       property='P_Nombre'
                       onChangeText={onChange}
@@ -66,7 +75,7 @@ export const FormularioScreen = () => {
                 <Text style={styles.texts}>Primer Apellido *</Text>
                 <View style={styles.contentInput}>
                   <CustomTextInput
-                      placeholder='Digite su primer apellido'
+                      placeholder='Digite su primer apellido *'
                       keyboardType='default'
                       property='P_Apellido'
                       onChangeText={onChange}
@@ -90,8 +99,8 @@ export const FormularioScreen = () => {
                 <Text style={styles.texts}>Número de Identidicacion (Cédula de ciudadania o extrangera)</Text>
                 <View style={styles.contentInput}>
                   <CustomTextInput
-                      placeholder='Digite el número de su documento de Identidad'
-                      keyboardType='numeric'
+                      placeholder='Digite el número de su cédula *'
+                      keyboardType='default'
                       property='ID_Adoptante'
                       onChangeText={onChange}
                       value={ID_Adoptante.toString()}
@@ -102,7 +111,7 @@ export const FormularioScreen = () => {
                 <Text style={styles.texts}>Correo electrónico personal o de contacto *</Text>
                 <View style={styles.contentInput}>
                   <CustomTextInput
-                      placeholder='Digite su correo electrónico para contactarlo'
+                      placeholder='Digite su correo electrónico para contacto'
                       keyboardType='email-address'
                       property='Correo'
                       onChangeText={onChange}
@@ -114,7 +123,7 @@ export const FormularioScreen = () => {
                 <Text style={styles.texts}>Dirección de recidencia actual *</Text>
                 <View style={styles.contentInput}>
                   <CustomTextInput
-                      placeholder='Digite la dirección exacta de su vivienda actual'
+                      placeholder='Digite la dirección actual de su vivienda'
                       keyboardType='default'
                       property='Direccion'
                       onChangeText={onChange}
@@ -126,24 +135,12 @@ export const FormularioScreen = () => {
                 <Text style={styles.texts}>Número telefónico móvil o fijo (Para contacto)</Text>
                 <View style={styles.contentInput}>
                   <CustomTextInput
-                      placeholder='Ingrese el número de telefono para contactarlo'
+                      placeholder='Ingrese el número de telefono para contacto'
                       keyboardType='numeric'
                       property='Telefono'
                       onChangeText={onChange}
                       value={Telefono.toString()}
                   />
-                </View>
-                <View style={{display: 'none'}}>
-                  <Text style={styles.texts}>ID Animal</Text>
-                  <View style={{display: 'none'}}>
-                    <CustomTextInput
-                        placeholder='Ejemplo: 1'
-                        keyboardType='numeric'
-                        property='ID_Animal'
-                        onChangeText={onChange}
-                        value={toString()}
-                    />
-                  </View>
                 </View>
               </View>
 
