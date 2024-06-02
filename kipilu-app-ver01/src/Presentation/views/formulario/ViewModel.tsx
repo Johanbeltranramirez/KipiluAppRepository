@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { ApiKipilu } from '../../Data/sources/remote/api/ApiKipilu';
 
-interface Animal {
-  ID_Animal: number;
-}
-
-interface FormValues {
+interface Adoptante {
   ID_Adoptante: number;
   P_Nombre: string;
   S_Nombre?: string;
@@ -13,78 +9,48 @@ interface FormValues {
   S_Apellido?: string;
   Correo: string;
   Direccion: string;
-  Telefono: string;
-  Animal: Animal;
+  Telefono: number;
+  ID_Animal: number;
 }
 
-interface FormulariosData {
-  Adoptante: number;  // Cambio aquí para el nombre de campo en la tabla Formularios
-  Animal: number;     // Cambio aquí para el nombre de campo en la tabla Formularios
-}
-
-const RegisterViewModel = () => {
-  const [values, setValues] = useState<FormValues>({
-    ID_Adoptante: 0, // Asignar un valor inicial apropiado
+const useViewModel = () => {
+  const [adoptante, setAdoptante] = useState<Adoptante>({
+    ID_Adoptante: 0,
     P_Nombre: '',
     S_Nombre: '',
     P_Apellido: '',
     S_Apellido: '',
     Correo: '',
     Direccion: '',
-    Telefono: '',
-    Animal: {
-      ID_Animal: 0 // Asignar un valor inicial apropiado
-    }
+    Telefono: 0,
+    ID_Animal: 0
   });
 
-  const onChange = (property: string, value: any) => {
-    setValues({ ...values, [property]: value });
+  const onChange = (property: string, value: string | number) => {
+    setAdoptante({ ...adoptante, [property]: value });
   };
 
-  const setAnimalId = (ID_Animal: number) => {
-    setValues({ ...values, Animal: { ID_Animal } });
-  };
-
-  const formulario = async () => {
+  const createAdoptante = async () => {
     try {
-      // Desestructurar los valores para separar los datos del adoptante y el animal
-      const { Animal, ...adoptanteData } = values;
-  
-      console.log(JSON.stringify(adoptanteData, null, 2));
-  
-      // Primera inserción para registrar un nuevo adoptante
-      const ResponseAdoptante = await ApiKipilu.post('/users/adoptantes/create', adoptanteData);
-
-      // Obtener el ID del adoptante desde la respuesta
-      const adoptanteID = ResponseAdoptante.data.ID_Adoptante;
-      const animalID = values.Animal.ID_Animal; // Obtener el ID del animal del estado
-  
-      console.log("ID del adoptante:", adoptanteID);
-      console.log("ID del animal:", animalID);
-  
-      // Segunda inserción para crear un nuevo formulario
-      const formulariosData: FormulariosData = {
-        Adoptante: adoptanteID, // Utilizar el ID de adoptante obtenido de la respuesta
-        Animal: animalID // Utilizar el ID del animal del estado
-      };
-  
-      console.log(JSON.stringify(formulariosData, null, 2));
-  
-      // Segunda inserción para crear un nuevo formulario
-      const ResponseFormulario = await ApiKipilu.post('/formularios/create', formulariosData);
-      console.log('RESPONSE (formulario):' + JSON.stringify(ResponseFormulario));
+      const response = await ApiKipilu.post('/users/adoptantes/create', adoptante);
+      console.log('Respuesta de crear adoptante:', response.data);
+      return true;
     } catch (error) {
-      console.log('ERROR:' + error);
+      console.log('ERROR al crear adoptante:', error);
+      return false;
     }
-
   };
-  
+
+  const setAnimalId = (animalId: number) => {
+    setAdoptante({ ...adoptante, ID_Animal: animalId });
+  };
+
   return {
-    ...values,
+    adoptante,
     onChange,
-    formulario,
+    createAdoptante,
     setAnimalId
   };
 };
 
-export default RegisterViewModel;
+export default useViewModel;
