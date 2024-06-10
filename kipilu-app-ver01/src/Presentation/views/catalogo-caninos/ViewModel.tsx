@@ -18,7 +18,7 @@ export interface Animal {
 const AnimalsViewModel = () => {
   const fetchAnimals = async () => {
     try {
-      const response = await axios.get('http://192.168.10.16:3000/api/animales/especie/1');
+      const response = await axios.get('https://kipilubackendrepository-3.onrender.com/api/animales/especie/1');
       const animalsData = response.data.data.map((animal: any) => {
         return {
           ...animal,
